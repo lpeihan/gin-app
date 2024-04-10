@@ -23,5 +23,5 @@ func ReturnSuccess(ctx *gin.Context, data interface{}) {
 func ReturnError(ctx *gin.Context, code int, message string) {
 	json := &ResponseJson{Code: code, Message: message}
 
-	ctx.JSON(200, json)
+	ctx.JSON(http.StatusOK, json)
 }

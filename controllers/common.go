@@ -6,13 +6,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type Code int
 type ResponseJson struct {
-	Code    int         `json:"code"`
+	Code    Code        `json:"code"`
 	Message interface{} `json:"message"`
 	Data    interface{} `json:"data"`
 }
 
-const CodeOK = 200
+const (
+	CodeOK            Code = 200
+	CodeNotAuthorized Code = 401
+)
 
 func ReturnSuccess(ctx *gin.Context, data interface{}) {
 	json := &ResponseJson{Code: CodeOK, Message: "success", Data: data}
@@ -21,7 +25,7 @@ func ReturnSuccess(ctx *gin.Context, data interface{}) {
 }
 
 func ReturnError(ctx *gin.Context, code int, message string) {
-	json := &ResponseJson{Code: code, Message: message}
+	json := &ResponseJson{Code: CodeOK, Message: message}
 
 	ctx.JSON(http.StatusOK, json)
 }

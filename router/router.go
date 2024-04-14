@@ -11,7 +11,7 @@ import (
 func Router() *gin.Engine {
 	r := gin.Default()
 
-	//引用日志工具
+	// 引用日志工具
 	r.Use(gin.LoggerWithConfig(utils.LoggerToFile()))
 	r.Use(utils.Recover)
 
@@ -19,7 +19,7 @@ func Router() *gin.Engine {
 
 	user := api.Group("/user")
 	{
-		user.GET("/info", controllers.GetUserInfo)
+		user.GET("/list", controllers.GetUserList)
 	}
 
 	return r

@@ -16,10 +16,10 @@ func GetUserList(c *gin.Context) {
 func CreateUser(c *gin.Context) {
 	user := models.User{}
 
-	user.Name = c.PostForm("name")
-	user.Password = c.PostForm("password")
-	user.Email = c.PostForm("email")
-	user.Phone = c.PostForm("phone")
+	if err := c.ShouldBindJSON(&user); err != nil {
+		ReturnError(c, CodeError, err.Error())
+		return
+	}
 
 	user.CreateTime = time.Now().Format(time.DateTime)
 	user.UpdateTime = time.Now().Format(time.DateTime)

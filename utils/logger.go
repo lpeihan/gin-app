@@ -69,7 +69,7 @@ func setOutPutFile(level logrus.Level, logName string) {
 		}
 	}
 
-	timeStr := time.Now().Format("2006-01-02")
+	timeStr := time.Now().Format(time.DateOnly)
 	fileName := path.Join("./runtime/log", logName+"_"+timeStr+".log")
 
 	var err error
@@ -90,7 +90,7 @@ func LoggerToFile() gin.LoggerConfig {
 		}
 	}
 
-	timeStr := time.Now().Format("2006-01-02")
+	timeStr := time.Now().Format(time.DateOnly)
 	fileName := path.Join("./runtime/log", "success_"+timeStr+".log")
 
 	os.Stderr, _ = os.OpenFile(fileName, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)

@@ -16,6 +16,7 @@ type ResponseJson struct {
 const (
 	CodeOK            Code = 200
 	CodeNotAuthorized Code = 401
+	CodeError         Code = 0
 )
 
 func ReturnSuccess(ctx *gin.Context, data interface{}) {
@@ -24,8 +25,8 @@ func ReturnSuccess(ctx *gin.Context, data interface{}) {
 	ctx.JSON(http.StatusOK, json)
 }
 
-func ReturnError(ctx *gin.Context, code int, message string) {
-	json := &ResponseJson{Code: CodeOK, Message: message}
+func ReturnError(ctx *gin.Context, code Code, message string) {
+	json := &ResponseJson{Code: code, Message: message, Data: gin.H{}}
 
 	ctx.JSON(http.StatusOK, json)
 }

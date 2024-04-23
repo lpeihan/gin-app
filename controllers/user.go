@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"gin-app/common/code"
+	"gin-app/common/response"
 	"gin-app/dto"
 	"gin-app/models"
 	"gin-app/utils"
@@ -13,7 +15,7 @@ func Register(ctx *gin.Context) {
 	user := models.User{}
 
 	if err := ctx.ShouldBindJSON(&user); err != nil {
-		ResponseError(ctx, CodeError, err.Error())
+		response.ReturnError(ctx, code.CommonError, err.Error())
 		return
 	}
 
@@ -25,15 +27,15 @@ func Register(ctx *gin.Context) {
 	token, err := utils.GenerateToken(user.ID)
 
 	if err != nil {
-		ResponseError(ctx, CodeError, "系统异常")
+		response.ReturnError(ctx, code.OK, "系统异常")
 		return
 	}
 
-	ResponseSuccess(ctx, gin.H{"token": token})
+	response.ReturnOK(ctx, gin.H{"token": token})
 }
 
 func GetUserInfo(ctx *gin.Context) {
 	user, _ := ctx.Get("user")
 
-	ResponseSuccess(ctx, dto.ToUserInfoDto(user.(models.User)))
+	response.ReturnOK(ctx, dto.ToUserInfoDto(user.(models.User)))
 }

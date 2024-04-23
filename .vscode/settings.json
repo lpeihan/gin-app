@@ -3,6 +3,7 @@
     "dgrijalva",
     "gonic",
     "gorm",
-    "logrus"
+    "logrus",
+    "sirupsen"
   ]
 }

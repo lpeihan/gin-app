@@ -1,7 +1,8 @@
 package middlewares
 
 import (
-	"gin-app/controllers"
+	"gin-app/common/global"
+	"gin-app/common/response"
 	"gin-app/models"
 	"gin-app/utils"
 	"strings"
@@ -14,7 +15,7 @@ func Auth() gin.HandlerFunc {
 		tokenString := ctx.GetHeader("Authorization")
 
 		if tokenString == "" || !strings.HasPrefix(tokenString, "Bearer ") {
-			controllers.ResponseUnauthorized(ctx)
+			response.ReturnUnauthorized(ctx)
 			ctx.Abort()
 			return
 		}
@@ -24,7 +25,7 @@ func Auth() gin.HandlerFunc {
 		token, claims, err := utils.ParseToken(tokenString)
 
 		if err != nil || !token.Valid {
-			controllers.ResponseUnauthorized(ctx)
+			response.ReturnUnauthorized(ctx)
 			ctx.Abort()
 			return
 		}
@@ -32,10 +33,10 @@ func Auth() gin.HandlerFunc {
 		userId := claims.UserId
 
 		var user models.User
-		utils.DB.First(&user, userId)
+		global.DB.First(&user, userId)
 
 		if user.ID == 0 {
-			controllers.ResponseUnauthorized(ctx)
+			response.ReturnUnauthorized(ctx)
 			ctx.Abort()
 			return
 		}

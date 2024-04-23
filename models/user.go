@@ -1,7 +1,7 @@
 package models
 
 import (
-	"gin-app/utils"
+	"gin-app/common/global"
 
 	"gorm.io/gorm"
 )
@@ -24,5 +24,5 @@ func (table *User) TableName() string {
 }
 
 func Register(user *User) *gorm.DB {
-	return utils.DB.Create(user)
+	return global.DB.Create(user)
 }

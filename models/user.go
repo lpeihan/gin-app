@@ -23,13 +23,6 @@ func (table *User) TableName() string {
 	return "user"
 }
 
-func GetUserList() []*User {
-	data := make([]*User, 10)
-	utils.DB.Find(&data)
-
-	return data
-}
-
-func CreateUser(user User) *gorm.DB {
+func Register(user User) *gorm.DB {
 	return utils.DB.Create(&user)
 }

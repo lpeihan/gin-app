@@ -7,7 +7,7 @@ import (
 
 var DB *gorm.DB
 
-func OpenMySql() {
+func InitMysql() {
 	dsn := "hello_user:Test!123@tcp(47.120.71.181:3306)/hello?charset=utf8mb4&parseTime=True&loc=Local"
 
 	var err error

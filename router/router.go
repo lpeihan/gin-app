@@ -19,8 +19,7 @@ func Router() *gin.Engine {
 
 	user := api.Group("/user")
 	{
-		user.GET("/list", controllers.GetUserList)
-		user.POST("/create", controllers.CreateUser)
+		user.POST("/register", controllers.Register)
 	}
 
 	return r

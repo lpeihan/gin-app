@@ -19,13 +19,13 @@ const (
 	CodeError         Code = 0
 )
 
-func ReturnSuccess(ctx *gin.Context, data interface{}) {
+func ResponseSuccess(ctx *gin.Context, data interface{}) {
 	json := &ResponseJson{Code: CodeOK, Message: "success", Data: data}
 
 	ctx.JSON(http.StatusOK, json)
 }
 
-func ReturnError(ctx *gin.Context, code Code, message string) {
+func ResponseError(ctx *gin.Context, code Code, message string) {
 	json := &ResponseJson{Code: code, Message: message, Data: gin.H{}}
 
 	ctx.JSON(http.StatusOK, json)

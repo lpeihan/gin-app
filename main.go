@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	utils.OpenMySql()
+	utils.InitMysql()
 
 	// AutoMigrate
 	utils.DB.AutoMigrate(&models.User{})

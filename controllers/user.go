@@ -7,17 +7,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetUserList(c *gin.Context) {
-	ReturnSuccess(c, gin.H{
-		"list": models.GetUserList(),
-	})
-}
-
-func CreateUser(c *gin.Context) {
+func Register(ctx *gin.Context) {
 	user := models.User{}
 
-	if err := c.ShouldBindJSON(&user); err != nil {
-		ReturnError(c, CodeError, err.Error())
+	if err := ctx.ShouldBindJSON(&user); err != nil {
+		ResponseError(ctx, CodeError, err.Error())
 		return
 	}
 
@@ -25,7 +19,7 @@ func CreateUser(c *gin.Context) {
 	user.UpdateTime = time.Now().Format(time.DateTime)
 	user.LoginTime = time.Now().Format(time.DateTime)
 
-	models.CreateUser(user)
+	models.Register(user)
 
-	ReturnSuccess(c, user)
+	ResponseSuccess(ctx, user)
 }

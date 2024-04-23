@@ -1,0 +1,140 @@
+panic error time:2024-04-23 15:39:57
+Undefined validation function 'mobile' on field 'Phone'
+stacktrace from panic:goroutine 10 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x5e
+gin-app/utils.Recover.func1()
+	/Users/alfred.li/Documents/demos/gin-app/utils/logger.go:137 +0x2aa
+panic({0x58027a0?, 0xc0004a5510?})
+	/usr/local/go/src/runtime/panic.go:770 +0x132
+github.com/go-playground/validator/v10.(*Validate).parseFieldTagsRecursive(0xc0001c0460, {0x57e9fb9?, 0x56d96f2?}, {0x57e9f9d, 0x5}, {0x0, 0x0}, 0x0)
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/cache.go:299 +0xa48
+github.com/go-playground/validator/v10.(*Validate).extractStructCache(0xc0001c0460, {0x587cf00?, 0xc0004a9310?, 0xc00006f208?}, {0x57e8905, 0x13})
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/cache.go:156 +0x5c5
+github.com/go-playground/validator/v10.(*validate).validateStruct(0xc0004c6480, {0x58c4a90, 0x5c71ae0}, {0x587cf00?, 0xc0004a9310?, 0xc000041200?}, {0x587cf00?, 0xc0004a9310?, 0x1000000000000?}, {0x58cb808, ...}, ...)
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/validator.go:38 +0x17c
+github.com/go-playground/validator/v10.(*Validate).StructCtx(0xc0001c0460, {0x58c4a90, 0x5c71ae0}, {0x587cf00, 0xc0004a9310})
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/validator_instance.go:395 +0x445
+github.com/go-playground/validator/v10.(*Validate).Struct(...)
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/validator_instance.go:368
+github.com/gin-gonic/gin/binding.(*defaultValidator).validateStruct(0x5c0f280, {0x587cf00, 0xc0004a9310})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/default_validator.go:80 +0x4b
+github.com/gin-gonic/gin/binding.(*defaultValidator).ValidateStruct(0x5c0f280, {0x587cf00?, 0xc0004a9310?})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/default_validator.go:59 +0x158
+github.com/gin-gonic/gin/binding.(*defaultValidator).ValidateStruct(0x5c0f280, {0x57ee6a0?, 0xc0004a92c0?})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/default_validator.go:57 +0xd8
+github.com/gin-gonic/gin/binding.validate(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/binding.go:120
+github.com/gin-gonic/gin/binding.decodeJSON({0x4c9cf798?, 0xc000319140?}, {0x57ee6a0, 0xc0004a92c0})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/json.go:55 +0x9c
+github.com/gin-gonic/gin/binding.jsonBinding.Bind({}, 0x52515de?, {0x57ee6a0?, 0xc0004a92c0?})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/json.go:37 +0x86
+github.com/gin-gonic/gin.(*Context).ShouldBindWith(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:741
+github.com/gin-gonic/gin.(*Context).ShouldBindJSON(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:701
+gin-app/controllers.Register(0xc000500900)
+	/Users/alfred.li/Documents/demos/gin-app/controllers/user.go:25 +0x5b
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+gin-app/utils.Recover(0xc000500900)
+	/Users/alfred.li/Documents/demos/gin-app/utils/logger.go:149 +0x62
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.LoggerWithConfig.func1(0xc000500900)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240 +0xdd
+github.com/gin-gonic/gin.(*Context).Next(0xc000500900)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x2b
+gin-app/router.Router.Cors.func1(0xc000500900)
+	/Users/alfred.li/Documents/demos/gin-app/middlewares/cors.go:21 +0x113
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1(0xc000500900)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/recovery.go:102 +0x7a
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.LoggerWithConfig.func1(0xc000500900)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240 +0xdd
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc0000d2d00, 0xc000500900)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:620 +0x66e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc0000d2d00, {0x58c3f70, 0xc00013e460}, 0xc0004359e0)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:576 +0x1b2
+net/http.serverHandler.ServeHTTP({0x58c2568?}, {0x58c3f70?, 0xc00013e460?}, 0x6?)
+	/usr/local/go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc00053c6c0, {0x58c4cc0, 0xc0001c2600})
+	/usr/local/go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	/usr/local/go/src/net/http/server.go:3285 +0x4b4
+
+panic error time:2024-04-23 15:40:15
+Undefined validation function 'mobile' on field 'Phone'
+stacktrace from panic:goroutine 10 [running]:
+runtime/debug.Stack()
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x5e
+gin-app/utils.Recover.func1()
+	/Users/alfred.li/Documents/demos/gin-app/utils/logger.go:137 +0x2aa
+panic({0x58027a0?, 0xc0005a02b0?})
+	/usr/local/go/src/runtime/panic.go:770 +0x132
+github.com/go-playground/validator/v10.(*Validate).parseFieldTagsRecursive(0xc0001c0460, {0x57e9fb9?, 0x56d96f2?}, {0x57e9f9d, 0x5}, {0x0, 0x0}, 0x0)
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/cache.go:299 +0xa48
+github.com/go-playground/validator/v10.(*Validate).extractStructCache(0xc0001c0460, {0x587cf00?, 0xc0005aa1e0?, 0x5213f96?}, {0x57e8905, 0x13})
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/cache.go:156 +0x5c5
+github.com/go-playground/validator/v10.(*validate).validateStruct(0xc0005b6480, {0x58c4a90, 0x5c71ae0}, {0x587cf00?, 0xc0005aa1e0?, 0x0?}, {0x587cf00?, 0xc0005aa1e0?, 0x0?}, {0x58cb808, ...}, ...)
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/validator.go:38 +0x17c
+github.com/go-playground/validator/v10.(*Validate).StructCtx(0xc0001c0460, {0x58c4a90, 0x5c71ae0}, {0x587cf00, 0xc0005aa1e0})
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/validator_instance.go:395 +0x445
+github.com/go-playground/validator/v10.(*Validate).Struct(...)
+	/Users/alfred.li/go/pkg/mod/github.com/go-playground/validator/v10@v10.19.0/validator_instance.go:368
+github.com/gin-gonic/gin/binding.(*defaultValidator).validateStruct(0x5c0f280, {0x587cf00, 0xc0005aa1e0})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/default_validator.go:80 +0x4b
+github.com/gin-gonic/gin/binding.(*defaultValidator).ValidateStruct(0x5c0f280, {0x587cf00?, 0xc0005aa1e0?})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/default_validator.go:59 +0x158
+github.com/gin-gonic/gin/binding.(*defaultValidator).ValidateStruct(0x5c0f280, {0x57ee6a0?, 0xc0005aa190?})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/default_validator.go:57 +0xd8
+github.com/gin-gonic/gin/binding.validate(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/binding.go:120
+github.com/gin-gonic/gin/binding.decodeJSON({0x4c9cf798?, 0xc0004c01c0?}, {0x57ee6a0, 0xc0005aa190})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/json.go:55 +0x9c
+github.com/gin-gonic/gin/binding.jsonBinding.Bind({}, 0xc0000414b8?, {0x57ee6a0?, 0xc0005aa190?})
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/binding/json.go:37 +0x86
+github.com/gin-gonic/gin.(*Context).ShouldBindWith(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:741
+github.com/gin-gonic/gin.(*Context).ShouldBindJSON(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:701
+gin-app/controllers.Register(0xc000618000)
+	/Users/alfred.li/Documents/demos/gin-app/controllers/user.go:25 +0x5b
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+gin-app/utils.Recover(0xc000618000)
+	/Users/alfred.li/Documents/demos/gin-app/utils/logger.go:149 +0x62
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.LoggerWithConfig.func1(0xc000618000)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240 +0xdd
+github.com/gin-gonic/gin.(*Context).Next(0xc000618000)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174 +0x2b
+gin-app/router.Router.Cors.func1(0xc000618000)
+	/Users/alfred.li/Documents/demos/gin-app/middlewares/cors.go:21 +0x113
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1(0xc000618000)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/recovery.go:102 +0x7a
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.LoggerWithConfig.func1(0xc000618000)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/logger.go:240 +0xdd
+github.com/gin-gonic/gin.(*Context).Next(...)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/context.go:174
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc0000d2d00, 0xc000618000)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:620 +0x66e
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc0000d2d00, {0x58c3f70, 0xc00049a2a0}, 0xc0005b6360)
+	/Users/alfred.li/go/pkg/mod/github.com/gin-gonic/gin@v1.9.1/gin.go:576 +0x1b2
+net/http.serverHandler.ServeHTTP({0x58c2568?}, {0x58c3f70?, 0xc00049a2a0?}, 0x6?)
+	/usr/local/go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc00053c6c0, {0x58c4cc0, 0xc0001c2600})
+	/usr/local/go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	/usr/local/go/src/net/http/server.go:3285 +0x4b4
+

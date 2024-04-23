@@ -11,17 +11,32 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Register(ctx *gin.Context) {
-	user := models.User{}
+type RegisterRequestJson struct {
+	Name     string `json:"name" binding:"required"`
+	Password string `json:"password" binding:"required"`
+	Phone    string `json:"phone"`
+	Email    string `json:"email" `
+	Avatar   string `json:"avatar"`
+}
 
-	if err := ctx.ShouldBindJSON(&user); err != nil {
+func Register(ctx *gin.Context) {
+	json := RegisterRequestJson{}
+
+	if err := ctx.ShouldBindJSON(&json); err != nil {
 		response.ReturnError(ctx, code.CommonError, err.Error())
 		return
 	}
 
-	user.CreateTime = time.Now().Format(time.DateTime)
-	user.UpdateTime = time.Now().Format(time.DateTime)
-	user.LoginTime = time.Now().Format(time.DateTime)
+	user := models.User{
+		Name:       json.Name,
+		Password:   json.Password,
+		Phone:      json.Phone,
+		Email:      json.Email,
+		Avatar:     json.Avatar,
+		CreateTime: time.Now().Format(time.DateTime),
+		UpdateTime: time.Now().Format(time.DateTime),
+		LoginTime:  time.Now().Format(time.DateTime),
+	}
 
 	models.Register(&user)
 	token, err := utils.GenerateToken(user.ID)

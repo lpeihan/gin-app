@@ -25,5 +25,11 @@ func Router() *gin.Engine {
 		user.GET("/info", middlewares.Auth(), controllers.GetUserInfo)
 	}
 
+	// category
+	category := api.Group("/category")
+	{
+		category.POST("/create", middlewares.Auth(), controllers.CreateCategory)
+	}
+
 	return r
 }

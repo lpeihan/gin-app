@@ -13,6 +13,8 @@ func InitMysql() {
 
 	DB, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	DB.AutoMigrate(&models.User{})
+	DB.AutoMigrate(&models.Post{})
+	DB.AutoMigrate(&models.Category{})
 
 	global.DB = DB
 

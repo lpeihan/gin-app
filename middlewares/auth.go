@@ -1,7 +1,6 @@
 package middlewares
 
 import (
-	"gin-app/common/global"
 	"gin-app/common/response"
 	"gin-app/models"
 	"gin-app/utils"
@@ -31,9 +30,7 @@ func Auth() gin.HandlerFunc {
 		}
 
 		userId := claims.UserId
-
-		var user models.User
-		global.DB.First(&user, userId)
+		var user = models.GetUserById(userId)
 
 		if user.ID == 0 {
 			response.ReturnUnauthorized(ctx)

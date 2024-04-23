@@ -4,6 +4,7 @@
     "gonic",
     "gorm",
     "logrus",
-    "sirupsen"
+    "sirupsen",
+    "varchar"
   ]
 }

@@ -7,11 +7,11 @@ import (
 var secret = []byte("secret")
 
 type Claims struct {
-	UserId int
+	UserId uint
 	jwt.StandardClaims
 }
 
-func GenerateToken(userId int) (string, error) {
+func GenerateToken(userId uint) (string, error) {
 	claims := &Claims{
 		UserId: userId,
 		StandardClaims: jwt.StandardClaims{

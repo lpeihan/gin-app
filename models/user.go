@@ -7,7 +7,7 @@ import (
 )
 
 type User struct {
-	ID         uint   `json:"id" gorm:"primary_key"`
+	ID         int    `json:"id" gorm:"primary_key"`
 	Name       string `json:"name"`
 	Password   string `json:"password"`
 	Phone      string `json:"phone"`
@@ -23,6 +23,6 @@ func (table *User) TableName() string {
 	return "user"
 }
 
-func Register(user User) *gorm.DB {
-	return utils.DB.Create(&user)
+func Register(user *User) *gorm.DB {
+	return utils.DB.Create(user)
 }

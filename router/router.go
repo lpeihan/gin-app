@@ -2,6 +2,7 @@ package router
 
 import (
 	"gin-app/controllers"
+	"gin-app/middlewares"
 
 	"gin-app/utils"
 
@@ -20,6 +21,7 @@ func Router() *gin.Engine {
 	user := api.Group("/user")
 	{
 		user.POST("/register", controllers.Register)
+		user.GET("/info", middlewares.Auth(), controllers.GetUserInfo)
 	}
 
 	return r

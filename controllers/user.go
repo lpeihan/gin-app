@@ -42,7 +42,7 @@ func Register(ctx *gin.Context) {
 	token, err := utils.GenerateToken(user.ID)
 
 	if err != nil {
-		response.ReturnError(ctx, code.OK, "系统异常")
+		response.ReturnError(ctx, code.CommonError, code.GetErrorMessage(code.CommonError))
 		return
 	}
 

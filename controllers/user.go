@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"gin-app/dto"
 	"gin-app/models"
 	"gin-app/utils"
 	"time"
@@ -34,5 +35,5 @@ func Register(ctx *gin.Context) {
 func GetUserInfo(ctx *gin.Context) {
 	user, _ := ctx.Get("user")
 
-	ResponseSuccess(ctx, user)
+	ResponseSuccess(ctx, dto.ToUserInfoDto(user.(models.User)))
 }

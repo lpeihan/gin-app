@@ -14,3 +14,4 @@
 2024-04-23 13:25:09 - 127.0.0.1 "GET /api/user/info HTTP/1.1 401 27.521µs "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
 2024-04-23 13:28:22 - 127.0.0.1 "GET /api/user/info HTTP/1.1 401 52.704µs "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
 2024-04-23 13:28:26 - 127.0.0.1 "GET /api/user/info HTTP/1.1 200 57.906291ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
+2024-04-23 13:35:55 - 127.0.0.1 "GET /api/user/info HTTP/1.1 200 65.485267ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "

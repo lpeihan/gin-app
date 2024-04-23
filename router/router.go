@@ -12,12 +12,13 @@ import (
 func Router() *gin.Engine {
 	r := gin.Default()
 
-	// 引用日志工具
+	r.Use(middlewares.Cors())
 	r.Use(gin.LoggerWithConfig(utils.LoggerToFile()))
 	r.Use(utils.Recover)
 
 	api := r.Group("/api")
 
+	// user
 	user := api.Group("/user")
 	{
 		user.POST("/register", controllers.Register)

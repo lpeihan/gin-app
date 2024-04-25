@@ -6,21 +6,14 @@ import (
 	"gin-app/dto"
 	"gin-app/models"
 	"gin-app/utils"
+	"gin-app/vo"
 	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
-type RegisterRequestJson struct {
-	Name     string `json:"name" binding:"required"`
-	Password string `json:"password" binding:"required"`
-	Phone    string `json:"phone"`
-	Email    string `json:"email" `
-	Avatar   string `json:"avatar"`
-}
-
 func Register(ctx *gin.Context) {
-	json := RegisterRequestJson{}
+	json := vo.RegisterRequestJson{}
 
 	if err := ctx.ShouldBindJSON(&json); err != nil {
 		response.ReturnError(ctx, code.CommonError, err.Error())

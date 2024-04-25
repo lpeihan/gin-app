@@ -10,7 +10,7 @@ const (
 
 var ErrorMessage = map[Code]string{
 	OK:           "成功",
-	Unauthorized: "权限不足",
+	Unauthorized: "请先登录",
 	CommonError:  "参数错误",
 }
 

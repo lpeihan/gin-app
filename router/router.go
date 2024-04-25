@@ -31,5 +31,13 @@ func Router() *gin.Engine {
 		category.POST("/create", middlewares.Auth(), controllers.CreateCategory)
 	}
 
+	// post
+	post := api.Group("/post")
+	{
+		post.POST("/create", middlewares.Auth(), controllers.CreatePost)
+		post.GET("/info", controllers.GetPostInfo)
+		post.GET("/list", controllers.GetPostList)
+	}
+
 	return r
 }

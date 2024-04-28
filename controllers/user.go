@@ -35,7 +35,7 @@ func Register(ctx *gin.Context) {
 	token, err := utils.GenerateToken(user.ID)
 
 	if err != nil {
-		response.ReturnError(ctx, code.CommonError, code.GetErrorMessage(code.CommonError))
+		response.ReturnError(ctx, code.CommonError, code.GetCodeMessage(code.CommonError))
 		return
 	}
 

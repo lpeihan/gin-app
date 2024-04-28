@@ -8,14 +8,14 @@ const (
 	CommonError  Code = 0
 )
 
-var ErrorMessage = map[Code]string{
+var CodeMessage = map[Code]string{
 	OK:           "成功",
 	Unauthorized: "请先登录",
 	CommonError:  "参数错误",
 }
 
-func GetErrorMessage(code Code) string {
-	message, ok := ErrorMessage[code]
+func GetCodeMessage(code Code) string {
+	message, ok := CodeMessage[code]
 
 	if !ok {
 		return "未知错误"

@@ -14,7 +14,16 @@ type ResponseJson struct {
 }
 
 func ReturnOK(ctx *gin.Context, data interface{}) {
-	json := &ResponseJson{Code: code.OK, Message: code.GetErrorMessage(code.OK), Data: data}
+	json := &ResponseJson{Code: code.OK, Message: code.GetCodeMessage(code.OK), Data: data}
+
+	ctx.JSON(http.StatusOK, json)
+}
+
+func ReturnList(ctx *gin.Context, list interface{}, total int64) {
+	json := &ResponseJson{Code: code.OK, Message: code.GetCodeMessage(code.OK), Data: gin.H{
+		"list":  list,
+		"total": total,
+	}}
 
 	ctx.JSON(http.StatusOK, json)
 }
@@ -26,7 +35,7 @@ func ReturnError(ctx *gin.Context, code code.Code, message string) {
 }
 
 func ReturnUnauthorized(ctx *gin.Context) {
-	json := &ResponseJson{Code: code.Unauthorized, Message: code.GetErrorMessage(code.Unauthorized), Data: gin.H{}}
+	json := &ResponseJson{Code: code.Unauthorized, Message: code.GetCodeMessage(code.Unauthorized), Data: gin.H{}}
 
 	ctx.JSON(http.StatusOK, json)
 }

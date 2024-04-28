@@ -52,17 +52,17 @@ func GetPostInfo(ctx *gin.Context) {
 }
 
 func GetPostList(ctx *gin.Context) {
-	pageNum, _ := strconv.Atoi(ctx.DefaultQuery("pageNum", "1"))
-	pageSize, _ := strconv.Atoi(ctx.DefaultQuery("pageSize", "20"))
+	page, _ := strconv.Atoi(ctx.DefaultQuery("page", "1"))
+	size, _ := strconv.Atoi(ctx.DefaultQuery("size", "20"))
 
-	pageNum = pageNum - 1
+	page = page - 1
 
 	var posts []models.Post
-	global.DB.Order("create_time desc").Offset(pageNum * pageSize).Limit(pageSize).Find(&posts)
+	global.DB.Order("create_time desc").Offset(page * size).Limit(size).Find(&posts)
 	// var posts = global.DB.Exec("select * from post order by create_time desc limit ? offset ?", pageSize, pageNum*pageSize)
 
 	var total int64
 	global.DB.Model(models.Post{}).Count(&total)
 
-	response.ReturnOK(ctx, gin.H{"List": posts, "Total": total})
+	response.ReturnList(ctx, posts, total)
 }

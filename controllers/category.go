@@ -3,15 +3,15 @@ package controllers
 import (
 	"gin-app/common/code"
 	"gin-app/common/response"
+	"gin-app/dto"
 	"gin-app/models"
-	"gin-app/vo"
 	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 func CreateCategory(ctx *gin.Context) {
-	data := vo.CreateCategoryRequestJson{}
+	data := dto.CreateCategoryReq{}
 
 	if err := ctx.ShouldBindJSON(&data); err != nil {
 		response.ReturnError(ctx, code.CommonError, err.Error())

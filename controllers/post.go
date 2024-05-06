@@ -4,8 +4,8 @@ import (
 	"gin-app/common/code"
 	"gin-app/common/global"
 	"gin-app/common/response"
+	"gin-app/dto"
 	"gin-app/models"
-	"gin-app/vo"
 	"strconv"
 	"time"
 
@@ -13,7 +13,7 @@ import (
 )
 
 func CreatePost(ctx *gin.Context) {
-	json := vo.CreatePostRequestJson{}
+	json := dto.CreatePostReq{}
 
 	if err := ctx.ShouldBindJSON(&json); err != nil {
 		response.ReturnError(ctx, code.CommonError, err.Error())
@@ -58,8 +58,7 @@ func GetPostList(ctx *gin.Context) {
 	page = page - 1
 
 	var posts []models.Post
-	global.DB.Order("create_time desc").Offset(page * size).Limit(size).Find(&posts)
-	// var posts = global.DB.Exec("select * from post order by create_time desc limit ? offset ?", pageSize, pageNum*pageSize)
+	global.DB.Order("create_time desc").Preload("Category").Offset(page * size).Limit(size).Find(&posts)
 
 	var total int64
 	global.DB.Model(models.Post{}).Count(&total)

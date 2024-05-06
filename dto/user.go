@@ -1,8 +1,6 @@
 package dto
 
-import "gin-app/models"
-
-type UserInfoDto struct {
+type UserInfoRes struct {
 	ID         uint   `json:"id"`
 	Name       string `json:"name"`
 	Phone      string `json:"phone"`
@@ -13,15 +11,10 @@ type UserInfoDto struct {
 	UpdateTime string `json:"updateTime"`
 }
 
-func ToUserInfoDto(user models.User) UserInfoDto {
-	return UserInfoDto{
-		ID:         user.ID,
-		Name:       user.Name,
-		Phone:      user.Phone,
-		Email:      user.Email,
-		Avatar:     user.Avatar,
-		LoginTime:  user.LoginTime,
-		CreateTime: user.CreateTime,
-		UpdateTime: user.UpdateTime,
-	}
+type RegisterReq struct {
+	Name     string `json:"name" binding:"required"`
+	Password string `json:"password" binding:"required"`
+	Phone    string `json:"phone"`
+	Email    string `json:"email" `
+	Avatar   string `json:"avatar"`
 }

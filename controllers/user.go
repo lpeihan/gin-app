@@ -6,14 +6,13 @@ import (
 	"gin-app/dto"
 	"gin-app/models"
 	"gin-app/utils"
-	"gin-app/vo"
 	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Register(ctx *gin.Context) {
-	json := vo.RegisterRequestJson{}
+	json := dto.RegisterReq{}
 
 	if err := ctx.ShouldBindJSON(&json); err != nil {
 		response.ReturnError(ctx, code.CommonError, err.Error())
@@ -43,7 +42,18 @@ func Register(ctx *gin.Context) {
 }
 
 func GetUserInfo(ctx *gin.Context) {
-	user, _ := ctx.Get("user")
+	contextUser, _ := ctx.Get("user")
 
-	response.ReturnOK(ctx, dto.ToUserInfoDto(user.(models.User)))
+	user := contextUser.(models.User)
+
+	response.ReturnOK(ctx, &dto.UserInfoRes{
+		ID:         user.ID,
+		Name:       user.Name,
+		Phone:      user.Phone,
+		Email:      user.Email,
+		Avatar:     user.Avatar,
+		LoginTime:  user.LoginTime,
+		CreateTime: user.CreateTime,
+		UpdateTime: user.UpdateTime,
+	})
 }

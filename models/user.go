@@ -30,6 +30,13 @@ func GetUserById(id uint) User {
 	return user
 }
 
+func GetUserByName(name string) User {
+	user := User{}
+
+	global.DB.Where("name = ?", name).First(&user)
+	return user
+}
+
 func Register(user *User) *gorm.DB {
 	return global.DB.Create(user)
 }

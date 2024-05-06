@@ -13,9 +13,9 @@ import (
 )
 
 func CreatePost(ctx *gin.Context) {
-	json := dto.CreatePostReq{}
+	req := dto.CreatePostReq{}
 
-	if err := ctx.ShouldBindJSON(&json); err != nil {
+	if err := ctx.ShouldBindJSON(&req); err != nil {
 		response.ReturnError(ctx, code.CommonError, err.Error())
 		return
 	}
@@ -24,10 +24,10 @@ func CreatePost(ctx *gin.Context) {
 
 	post := models.Post{
 		UserId:     user.(models.User).ID,
-		CategoryId: json.CategoryId,
-		Title:      json.Title,
-		Content:    json.Content,
-		Image:      json.Image,
+		CategoryId: req.CategoryId,
+		Title:      req.Title,
+		Content:    req.Content,
+		Image:      req.Image,
 		CreateTime: time.Now().Format(time.DateTime),
 		UpdateTime: time.Now().Format(time.DateTime),
 	}

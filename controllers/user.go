@@ -13,19 +13,24 @@ import (
 )
 
 func Register(ctx *gin.Context) {
-	json := dto.RegisterReq{}
+	req := dto.RegisterReq{}
 
-	if err := ctx.ShouldBindJSON(&json); err != nil {
+	if err := ctx.ShouldBindJSON(&req); err != nil {
 		response.ReturnError(ctx, code.CommonError, err.Error())
 		return
 	}
 
+	if models.GetUserByName(req.Name).ID != 0 {
+		response.ReturnError(ctx, code.CommonError, "用户已存在")
+		return
+	}
+
 	user := models.User{
-		Name:       json.Name,
-		Password:   json.Password,
-		Phone:      json.Phone,
-		Email:      json.Email,
-		Avatar:     json.Avatar,
+		Name:       req.Name,
+		Password:   req.Password,
+		Phone:      req.Phone,
+		Email:      req.Email,
+		Avatar:     req.Avatar,
 		CreateTime: time.Now().Format(time.DateTime),
 		UpdateTime: time.Now().Format(time.DateTime),
 		LoginTime:  time.Now().Format(time.DateTime),

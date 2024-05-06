@@ -9,3 +9,7 @@ mysql:
     password: gin_demo
     charset: utf8mb4
     loc: Asia/Shanghai
+
+redis:
+    addr: 47.120.71.181:6379
+    password: foobared

@@ -19,3 +19,5 @@
 2024-05-06 13:39:39 - 127.0.0.1 "POST /api/user/register HTTP/1.1 200 75.891361ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
 2024-05-06 13:40:31 - 127.0.0.1 "POST /api/user/register HTTP/1.1 200 50.237789ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
 2024-05-06 13:49:26 - 127.0.0.1 "POST /api/user/register HTTP/1.1 200 65.375396ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
+2024-05-06 15:57:53 - 127.0.0.1 "GET /api/user/info HTTP/1.1 200 166.266867ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
+2024-05-06 16:05:25 - 127.0.0.1 "GET /api/user/info HTTP/1.1 200 151.409222ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "

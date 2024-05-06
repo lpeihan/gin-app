@@ -54,7 +54,7 @@ func GetUserInfo(ctx *gin.Context) {
 	var postCount int64
 	global.DB.Model(models.Post{}).Where("user_id = ?", user.ID).Count(&postCount)
 
-	response.ReturnOK(ctx, &dto.UserInfoRes{
+	res := &dto.UserInfoRes{
 		ID:         user.ID,
 		Name:       user.Name,
 		Phone:      user.Phone,
@@ -64,5 +64,20 @@ func GetUserInfo(ctx *gin.Context) {
 		CreateTime: user.CreateTime,
 		UpdateTime: user.UpdateTime,
 		PostCount:  postCount,
-	})
+	}
+
+	// jsonBytes, err := json.Marshal(res)
+	// if err != nil {
+	// 	fmt.Println("序列化失败:", err)
+	// 	return
+	// }
+
+	// err = global.RDB.Set(ctx, fmt.Sprintf("user:%d", user.ID), string(jsonBytes), 0).Err()
+	// if err != nil {
+	// 	fmt.Println("存储 JSON 字符串到 Redis 出错:", err)
+	// 	return
+	// }
+
+	// 返回响应
+	response.ReturnOK(ctx, res)
 }

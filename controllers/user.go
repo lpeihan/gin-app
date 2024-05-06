@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"gin-app/common/code"
+	"gin-app/common/global"
 	"gin-app/common/response"
 	"gin-app/dto"
 	"gin-app/models"
@@ -45,6 +46,8 @@ func GetUserInfo(ctx *gin.Context) {
 	contextUser, _ := ctx.Get("user")
 
 	user := contextUser.(models.User)
+	var postCount int64
+	global.DB.Model(models.Post{}).Where("user_id = ?", user.ID).Count(&postCount)
 
 	response.ReturnOK(ctx, &dto.UserInfoRes{
 		ID:         user.ID,
@@ -55,5 +58,6 @@ func GetUserInfo(ctx *gin.Context) {
 		LoginTime:  user.LoginTime,
 		CreateTime: user.CreateTime,
 		UpdateTime: user.UpdateTime,
+		PostCount:  postCount,
 	})
 }

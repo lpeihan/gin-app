@@ -57,8 +57,14 @@ func GetPostList(ctx *gin.Context) {
 
 	page = page - 1
 
-	var posts []models.Post
-	global.DB.Order("create_time desc").Preload("Category").Offset(page * size).Limit(size).Find(&posts)
+	var posts []dto.GetPostListRes
+	global.DB.Table("post").
+		Order("create_time desc").
+		Offset(page * size).
+		Limit(size).
+		Select("post.id, post.user_id, post.category_id, category.name as category_name, post.title, post.content, post.image, post.update_time, post.create_time").
+		Joins("left join category on post.category_id = category.id").
+		Scan(&posts)
 
 	var total int64
 	global.DB.Model(models.Post{}).Count(&total)

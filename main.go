@@ -9,6 +9,7 @@ func main() {
 	utils.InitConfig()
 	utils.InitMysql()
 	utils.InitRedis()
+	utils.InitCron()
 
 	r := router.Router()
 

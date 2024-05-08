@@ -1,0 +1,4 @@
+2024-05-08 13:12:58 - 127.0.0.1 "GET / HTTP/1.1 404 699ns "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
+2024-05-08 13:12:59 - 127.0.0.1 "GET /favicon.ico HTTP/1.1 404 702ns "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
+2024-05-08 13:13:03 - 127.0.0.1 "GET /api/user/list HTTP/1.1 404 622ns "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
+2024-05-08 13:13:26 - 127.0.0.1 "GET /api/post/list HTTP/1.1 200 74.618623ms "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" "
